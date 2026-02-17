@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp2
+  template:
+    metadata:
+      labels:
+        app: webapp2
+    spec:
+      containers:
+      - name: webapp2
+        image: ccaicedo/simple-flask-app:latest
+        ports:
+        - containerPort: 5000
